@@ -4,9 +4,9 @@ body {
   max-width: 600px;
   margin: 40px auto;
   padding: 0 16px;
-  background-color: #1a1a1a;
-  color: #e0e0e0;
   line-height: 1.6;
+  color: #e0e0e0;
+  background-color: #1a1a1a;
 }
 
 h1 {
