@@ -1,0 +1,111 @@
+/* === 全体 === */
+body{
+    font-family: sans-serif;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 16px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    background-color: #1a1a1a;
+}
+
+h1{
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+/* === 入力欄 === */
+input, select{
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 10px 12px;
+    width: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+label{
+    display: block;
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 0px;
+    margin-bottom: 6px;
+}
+
+.form-group{
+    margin-bottom: 16px;
+}
+
+.date-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.date-input{
+    flex: 1;
+}
+
+.day-input{
+    width: 100px;
+}
+
+/* === プレビュー === */
+
+#preview{
+    white-space: pre-wrap;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 14px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    color: #e0e0e0;
+}
+
+/* === ボタン ===*/
+
+button{
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #3a3a3a;
+}
+
+.button-group{
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.button-group button{
+    flex: 1;
+}
+
+.open-button{
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.open-button:hover{
+    background-color: #3a3a3a;
+}
