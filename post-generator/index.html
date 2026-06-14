@@ -4,27 +4,54 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <title>VRC Carino | 事前応募受付ポスト 生成ツール</title>
+  <title>Carino Tools | 公式アカウント用 Xポスト生成</title>
 </head>
 <body>
-  <h1>事前応募受付ポスト 生成ツール</h1>
-  <div class="date-row">
-    <div class="form-group">
-      <label for="eventDate">営業日</label>
-      <input type="date" id="eventDate">
+  <h1>公式アカウント用 Xポスト生成</h1>
+
+  <div class="tab-group">
+    <button class="tab-btn active" onclick="switchTab('pre')">事前応募受付ポスト</button>
+    <button class="tab-btn" onclick="switchTab('sameday')">当日抽選案内ポスト</button>
+  </div>
+
+  <!-- 事前応募受付ポスト -->
+  <div id="tab-pre" class="tab-content">
+    <div class="date-row">
+      <div class="form-group">
+        <label for="eventDate">営業日</label>
+        <input type="date" id="eventDate">
+      </div>
+
+      <div class="form-group">
+        <label for="deadlineDate">〆切日</label>
+        <input type="date" id="deadlineDate">
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="deadlineDate">〆切日</label>
-      <input type="date" id="deadlineDate">
+      <label for="formUrl">フォームURL</label>
+      <input type="text" id="formUrl" placeholder="https://forms.gle/xxxxx">
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="formUrl">フォームURL</label>
-    <input type="text" id="formUrl" placeholder="https://forms.gle/xxxxx">
+  <!-- 当日抽選案内ポスト -->
+  <div id="tab-sameday" class="tab-content" stylr="display: none;">
+    <div class="form-group">
+      <label for="samedayDate">営業日</label>
+      <input type="date" id="samedayDate">
+    </div>
+    <div class="form-group">
+      <label for="joinAccount">Join先</label>
+      <select id="joinAccount">
+        <option value="ジュン -Jun-|https://vrchat.com/home/user/usr_be6aa528-2660-40ba-b637-6ffcb6da67be">ジュン -Jun-</option>
+        <option value="あみたん|https://vrchat.com/home/user/usr_3b7d1da3-ec9b-4814-8577-037f0c901adb">あみたん</option>
+        <option value="AmashiroRyuka|http://vrchat.com/home/user/usr_2aadabdf-6d99-48a1-bf7d-c8971e1df5d4">AmashiroRyuka</option>
+        <option value="ありす・ありす|https://vrchat.com/home/user/usr_f4225913-33be-432b-bb51-addd1497ab95">ありす・ありす</option>
+        <option value="- なゆ -|https://vrchat.com/home/user/usr_e267233a-0d1a-445a-8b63-efb0e89eea8a">- なゆ -</option>
+      </select>
+    </div>
   </div>
-
+  
   <div id="preview">ここに本文のプレビューが表示されます。</div>
 
   <div class="button-group">
