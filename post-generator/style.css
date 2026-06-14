@@ -44,12 +44,8 @@ label{
     align-items: flex-end;
 }
 
-.date-input{
+.date-row .form-group{
     flex: 1;
-}
-
-.day-input{
-    width: 100px;
 }
 
 /* === プレビュー === */
