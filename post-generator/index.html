@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <title>Carino Tools | 公式アカウント用 Xポスト生成</title>
+  <title>Carino Tools | 公式Xアカウント用 定型ポスト生成</title>
 </head>
 <body>
-  <h1>公式アカウント用 Xポスト生成</h1>
+  <h1 class="tool">
+    公式Xアカウント用 定型ポスト生成
+  </h1>
 
+  <!-- 各ポスト切替タブ-->
   <div class="tab-group">
     <button class="tab-btn active" onclick="switchTab('pre')">事前応募受付ポスト</button>
     <button class="tab-btn" onclick="switchTab('sameday')">当日抽選案内ポスト</button>
@@ -29,8 +32,17 @@
     </div>
 
     <div class="form-group">
+
       <label for="formUrl">フォームURL</label>
       <input type="text" id="formUrl" placeholder="https://forms.gle/xxxxx">
+    </div>
+
+    <div class="image-block">
+      <label>添付画像</label>
+      <img src="images/pre/pre-poster.png" alt="事前応募受付ポスト用画像" class="image-preview">
+      <button onclick="copyImage('images/pre/pre-poster.png')">
+        <i class="fa-regular fa-image"></i> 画像をコピー
+      </button>
     </div>
   </div>
 
@@ -43,12 +55,30 @@
     <div class="form-group">
       <label for="joinAccount">Join先</label>
       <select id="joinAccount">
+        <option value="" disabled selected>Join先を選択</option>
         <option value="ジュン -Jun-|https://vrchat.com/home/user/usr_be6aa528-2660-40ba-b637-6ffcb6da67be">ジュン -Jun-</option>
         <option value="あみたん|https://vrchat.com/home/user/usr_3b7d1da3-ec9b-4814-8577-037f0c901adb">あみたん</option>
         <option value="AmashiroRyuka|http://vrchat.com/home/user/usr_2aadabdf-6d99-48a1-bf7d-c8971e1df5d4">AmashiroRyuka</option>
         <option value="ありす・ありす|https://vrchat.com/home/user/usr_f4225913-33be-432b-bb51-addd1497ab95">ありす・ありす</option>
         <option value="- なゆ -|https://vrchat.com/home/user/usr_e267233a-0d1a-445a-8b63-efb0e89eea8a">- なゆ -</option>
       </select>
+    </div>
+
+    <div class="image-row">
+      <div class="image-block">
+        <label>① ポスター画像</label>
+        <img src="images/sameday/sameday-poster.png" alt="当日用ポスター画像" class="image-preview">
+        <button onclick="copyImage('images/sameday/sameday-poster.png')">
+          <i class="fa-regular fa-image"></i> ポスター画像をコピー
+        </button>
+      </div>
+      <div class="image-block">
+        <label>② 応募条件・注意事項画像</label>
+        <img src="images/sameday/sameday-rules.png" alt="当日用応募条件画像" class="image-preview">
+        <button onclick="copyImage('images/sameday/sameday-rules.png')">
+          <i class="fa-regular fa-image"></i> 応募条件画像をコピー
+        </button>
+      </div>
     </div>
   </div>
   
@@ -63,9 +93,26 @@
     </button>
   </div>
 
-  <a id="openLink" href="###" target="_blank" class="open-button">
+  <a id="openLink" href="###" target="_blank" class="open-button" onclick="return validate();">
     <i class="fa-brands fa-x-twitter"></i> Xの投稿画面を開く
   </a>
+
+  <div class="tool-common-area">
+    <h3>できること</h3>
+    <div>
+      営業日、URLなど各項目を入力後、「Xの投稿画面を開く」ボタンを押すことで、<br>
+      入力に応じてポストが生成、Xの投稿画面が開きます。
+    </div>
+    <h3>注意点</h3>
+    <li>
+      ポストを生成した際、ポストには<b>画像が添付されていません。</b><br>
+      画像をコピー → Ctrl+V で画像を貼り付けてください。
+    </li>
+    <li>
+      アカウントについては現在ブラウザ上でログインしているアカウントになります。<br>
+      <b>アカウントの切り替え忘れ</b>がないよう注意してください。
+    </li>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -36,7 +36,7 @@ function buildPreText() {
     const deadlineDay = deadlineDate.getDate();
     const deadlineDayName = days[deadlineDate.getDay()];
 
-    const text = // エディターの自動インデントによって余計な空白が生まれる可能性があるため注意すること。
+    const text = // インデントによって余計な空白が生まれる可能性があるため注意すること。
 `【Carino 事前応募受付開始！】
 
 ${eventMonth}/${eventDay}(${eventDayName})営業の事前応募開始！
@@ -67,7 +67,7 @@ function buildSamedayText() {
     const samedayDay = samedayDate.getDate();
     const samedayDayName = days[samedayDate.getDay()];
 
-    const text =
+    const text = // インデントによって余計な空白が生まれる可能性があるため注意すること。
 `✨${samedayMonth}/${samedayDay}(${samedayDayName}) 当日参加枠のお知らせ！✨
 
 今回も当日にフレンド+で「抽選インスタンス」を開きます！
@@ -86,11 +86,30 @@ ${joinUrl}
     return text;
 }
 
-// タブ及び生成関数の対応表
-const builders = {
+const builders = { // タブ及び生成関数の対応表
     'pre'       : buildPreText,
     'sameday'   : buildSamedayText,
 };
+
+function validate() { // 各タブ 入力欄の未入力時警告
+    const missing = [];
+
+    if (currentTab === 'pre') {
+        if (!document.getElementById("eventDate").value) missing.push("営業日");
+        if (!document.getElementById("deadlineDate").value) missing.push("〆切日");
+        if (!document.getElementById("formUrl").value) missing.push("フォームURL");
+    }
+    else if (currentTab === 'sameday') {
+        if (!document.getElementById("samedayDate").value) missing.push("営業日");
+        if (!document.getElementById("joinAccount").value) missing.push("Join先");
+    }
+
+    if (missing.length > 0) {
+        alert("以下の項目が未入力です : \n・" + missing.join("\n・"));
+        return false;
+    }
+    return true;
+}
 
 function getCurrentText() {
     return builders[currentTab]();
@@ -108,12 +127,31 @@ function update() {
     document.getElementById("openLink").href = buildUrl();
 }
 
+async function copyImage(imagePath) {
+    try {
+        const item = new ClipboardItem({
+            'image/png': fetch(imagePath).then((response) => response.blob())
+        });
+
+        await navigator.clipboard.write([item]);
+
+        alert("画像をコピーしました！Xの投稿画面で Ctrl+V で貼り付けてください。");
+    }
+    catch(err)
+    {
+        console.error(err);
+        alert("画像のコピーに失敗しました。ChromeまたはEdgeで開いているか確認してください。");
+    }
+}
+
 function copyText() {
+    if (!validate()) return;
     navigator.clipboard.writeText(getCurrentText());
     alert("本文をコピーしました！");
 }
 
 function copyUrl() {
+    if (!validate()) return;
     navigator.clipboard.writeText(buildUrl());
     alert("Intent URLをコピーしました！")
 }
@@ -123,8 +161,7 @@ inputs.forEach((el) => {
     el.addEventListener("input", update);
 });
 
-// ページ読み込み時の初期化
-function init() {
+function init() { // ページ読み込み時の初期化
     document.querySelectorAll('.tab-content').forEach((el) => {
         el.style.display = 'none';
     })
